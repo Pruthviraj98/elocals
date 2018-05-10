@@ -3,6 +3,8 @@ $conn=mysqli_connect("localhost","root","","elocals");
 ?>
 <html>
 <script>
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 function showHint(str) {
     if (str.length == 0) {
         document.getElementById("txtHint").innerHTML = "";
@@ -67,27 +69,59 @@ function commonUpdate(str){
           document.getElementById("r").innerHTML = this.responseText;
       }
   }
-  //alert("hihi");
   xmlhttp.open("GET","getuser.php?q="+ str, true);
   xmlhttp.send();
 }
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 </script>
+<style>
+
+</style>
+
 </head>
 <body>
-
-<p><b>Enter your Mobile number:</b></p>
+<center><br><br>
+<p style="font-size:30px"><u>CASHBACK and REFERAL center</u></p>
+<table cellspacing="25px" frame="box">
+<tr>
 <form>
-Mobile <input type="text" onkeyup="showHint(this.value)" id="mobile">
+  <td>
+Mobile
+</td>
+<td>
+   <input type="text" onkeyup="showHint(this.value)" id="mobile">
+</td>
 </form>
 <p> <span id="txtHint"></span></p>
+</td>
+
+
+<tr>
+<td>
 <form>
-  Enter the referal Referal-Code: <input type="text" id="referal"><br>
+  Enter the Referal-Code:
+</td>
+<td>
+  <input type="text" id="referal"><br>
+</td></tr>
+
+
+<tr>
+<td>
   <input type="button" id="submit" onclick="redir(document.getElementById('referal').value, document.getElementById('mobile').value)" value="GetcashBack!!">
 </form>
-<p>refer to your friends by this code:<span id="referalStatus"></span></p>
-<p><span id="r"></span></p>
+</td>
+</tr>
 
+
+<tr>
+<td>
+<p>refer to your friends by this code:<span id="referalStatus"></span></p>
+</td>
+</tr>
+
+</table>
+</center>
 
 </body>
 </html>

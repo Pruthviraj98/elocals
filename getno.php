@@ -17,7 +17,7 @@ if (strlen($q) == 10) {
   }
   else
   {
-    $hint="Incorrect, you need to sinup in elocals app first using this number";
+    $hint="Incorrect, you need to signup in elocals app first using this number";
   }
 }
 
