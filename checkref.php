@@ -28,7 +28,9 @@ if ($conn->connect_error) {
         $status=$row["cashbackstatus"];
     }
 $status=mysqli_real_escape_string($conn, $status);
+//check if the cashbackstatus of the user is null or not
     if(strcmp("null", $status)==0){
+      //print that the cashback is earned along with the== referal id
       $result="SELECT myrefer FROM users WHERE mobile='$mobile'";
       $result = $conn->query($result);
       if ($result->num_rows > 0) {
@@ -36,12 +38,12 @@ $status=mysqli_real_escape_string($conn, $status);
         while($row = $result->fetch_assoc()) {
           $hint= $row['myrefer']."Cash back earned";
           echo $hint;
-        }
+        }//move to the hopemage.php for the updations in the data base for the cashback stauts
 
     }
   }
   else{
-
+//output only the referal id that the user can refer to his friends and  donot update the ddatabase
     $result="SELECT myrefer FROM users WHERE mobile='$mobile'";
     $result = $conn->query($result);
     if ($result->num_rows > 0) {
@@ -51,6 +53,5 @@ $status=mysqli_real_escape_string($conn, $status);
       }
   }
   }
-
 }
 ?>

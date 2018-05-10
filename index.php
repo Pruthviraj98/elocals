@@ -1,25 +1,29 @@
 <?php
+//////////////////////////////////////////////////////////////////////
+//this page wasnt being mentioned to be designed but still for the sake of authentication through the password,
+//this page is designed.. password in the data base for all the mobile no. is pass123,
+
+
+//The assignment's actual solution begins from the next page
+/////////////////////////////////////////////////////////////////////////
 session_start();
 //connect to database
 $db=mysqli_connect("localhost","root","","elocals");
 if(isset($_POST['Login'])){
 
-
+//assign mobile andpwd variables from the html attained
   $mobile=mysqli_real_escape_string($db,$_POST['mobile']);
   $password=mysqli_real_escape_string($db,$_POST['password']);
   $result="SELECT * FROM users WHERE mobile='$mobile' AND password='$password'";
   $result= mysqli_query($db,$result);
-
+//check if the mobile number is present in the database pr not and if the password matches
   if(mysqli_num_rows($result)==1){
-
-    $_SESSION['login'] = 1;
-    $_SESSION['mobile']=$mobile;
-    $_SESSION['message']="You are now Logged In";
-    header("location:homepage.php");
+    header("location:homepage.php");//redirect to homepage
   }
   else
   {
-               $_SESSION['message']="Incorrect Mobile-no or Password You need to login from elocals app first!!";
+               echo "Incorrect Mobile-no or Password You need to login from elocals app first!!";// show the message first
+               header("location:index.php");//redirect to same page
   }
 }
 
